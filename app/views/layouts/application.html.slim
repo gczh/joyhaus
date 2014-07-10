@@ -1,0 +1,29 @@
+doctype html
+html lang="en"
+  head
+    meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0"
+    title Joyhaus Gifts
+    = stylesheet_link_tag    "application", media: "screen"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body class=page_class
+    = render 'layouts/header'
+    #main
+      - if current_user
+        | Logged in as #{current_user.email}.
+        | #{link_to "Log out", logout_path}
+      - else
+        = link_to "Sign up", signup_path
+        | or
+        | #{link_to "log in", login_path}.
+
+      br
+      br
+
+      = render 'layouts/flash_messages'
+
+      = yield
+
+
+= javascript_initialization
+

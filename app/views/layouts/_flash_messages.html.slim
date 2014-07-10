@@ -1,0 +1,12 @@
+- if flash.any?
+  - flash.each do |key, value|
+    div class=("#{flash_class(key)} fade in") 
+      button.close aria-hidden="true" data-dismiss="alert" style=("font-size: 1.1em; text-align: center") type="button"  &times;
+      = value
+
+javascript:
+  $(".alert").alert();
+    window.setTimeout(function() {
+    $(".alert").fadeTo(300, 0).slideUp(300, function(){ });
+  }, 15000);
+ 
