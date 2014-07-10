@@ -8,8 +8,9 @@ gem 'thin'
 # temporary
 gem 'turbolinks'
 
-# Ecommerce Stack
-gem 'shoppe', '~> 1.0'
+# Authorization and Authentication
+gem 'sorcery'
+gem 'role_model'
 
 #Assets & Templates
 gem 'sass-rails', '~> 4.0.0'
