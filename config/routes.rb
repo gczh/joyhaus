@@ -1,4 +1,4 @@
-JoyhausTmp::Application.routes.draw do
+Joyhaus::Application.routes.draw do
 
   resources :products
 
