@@ -7,23 +7,12 @@ html lang="en"
     = javascript_include_tag "application"
     = csrf_meta_tags
   body class=page_class
-    = render 'layouts/header'
-    #main
-      - if current_user
-        | Logged in as #{current_user.email}.
-        | #{link_to "Log out", logout_path}
-      - else
-        = link_to "Sign up", signup_path
-        | or
-        | #{link_to "log in", login_path}.
-
-      br
-      br
-
+    .container
+      = render 'layouts/header'
       = render 'layouts/flash_messages'
-
       = yield
-
+      .footer
+        p &copy; Company 2014
 
 = javascript_initialization
 

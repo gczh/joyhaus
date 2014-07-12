@@ -2,7 +2,7 @@ Joyhaus::Application.routes.draw do
 
   resources :products
 
-  root to: "users#new"
+  root to: "products#home"
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
