@@ -1,12 +1,25 @@
 .header
   h1.logo 
     = link_to "Joyhaus Gifts", root_path
+  - if current_user
+    span.greeting-message Hi, #{current_user.email}
   ul.list-inline
     li.active 
-      = link_to "Home", root_path
+      = link_to "Browse", root_path
+    li
+      a href="#" Popular
+
+    li
+      a href="#" Order status
+
+    li.divider
+
+    li
+      a href="#" Shopping Cart
+
     - if current_user
       li 
-        a href="#" Logged in as #{current_user.email}
+        a href="#" Account
       li 
         = link_to "Log out", logout_path
     - else

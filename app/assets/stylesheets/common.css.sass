@@ -1,5 +1,6 @@
 $header-logo-color: #494949
 $header-list-border-color: #B8B8B8
+$header-menu-divider-color: #B8B8B8
 $footer-border-color: #E5E5E5
 
 body
@@ -28,6 +29,11 @@ h4
     a, a:hover, a:active
       color: $header-logo-color
       text-decoration: none
+  .greeting-message
+    display: block
+    text-align: right
+    margin-top: -20px
+    margin-bottom: 7px
   .list-inline
     text-align: center
     padding: 15px 0
@@ -38,6 +44,11 @@ h4
     font-size: 19px
     li
       padding: 0 15px
+      &.divider
+        border-right: 1px solid $header-menu-divider-color
+        height: 24px
+        margin: -5px 10px
+        padding: 0
     li a
       color: #838383
   h3
