@@ -7,11 +7,14 @@
         / a.btn.btn-lg.btn-success href="#" role="button"  Sign up today
 
 
-    - @products.each_slice(3) do |products|
+    - @products.each_slice(4) do |products|
       .marketing-row
         - products.each do |product|
           .showcase-section
             .showcase-image style="background: url(#{product.cover_picture}) bottom center; background-size: cover;"
             h4 = product.name
             p = product.description
-            h5 $#{product.price}
+            .action-area
+              h5.pull-left $#{product.price}
+              h5.pull-right 
+                a href="#" add to cart
