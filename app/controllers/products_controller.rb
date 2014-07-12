@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :require_login
+  before_filter :require_login, only: [:index, :edit, :update, :destroy]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home
