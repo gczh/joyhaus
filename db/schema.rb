@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140710185124) do
     t.decimal  "weight"
     t.boolean  "on_sale"
     t.boolean  "featured"
+    t.string   "cover_picture"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

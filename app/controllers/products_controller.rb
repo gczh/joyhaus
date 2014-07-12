@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home
+    @products = Product.where(on_sale: true)
   end
 
   # GET /products
@@ -73,6 +74,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:sku, :name, :description, :price, :cost_price, :weight, :on_sale, :featured)
+      params.require(:product).permit(:sku, :name, :description, :price, :cost_price, :weight, :on_sale, :featured, :cover_picture)
     end
 end

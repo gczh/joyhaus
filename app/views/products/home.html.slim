@@ -5,23 +5,13 @@
       / p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
       / p
         / a.btn.btn-lg.btn-success href="#" role="button"  Sign up today
-    .marketing-row
-      .showcase-section.no-left-margin
-        h4 Exquisite Blue Ship
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      .showcase-section.no-left-margin.no-right-margin
-        h4 My Amazing Valentine
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      .showcase-section.no-right-margin
-        h4 Happy Christmas
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-    .marketing-row
-      .showcase-section.no-left-margin
-        h4 Seasons Greeting
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      .showcase-section.no-left-margin.no-right-margin
-        h4 Happy Birthday!
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
-      .showcase-section.no-right-margin
-        h4 Happy Holiday
-        p Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.
+
+
+    - @products.each_with_index do |product, index|
+      - if index % 3 == 0 || index == 1
+        .marketing-row
+          .showcase-section
+            .showcase-image style="background: url(#{product.cover_picture}) bottom center; background-size: cover;"
+            h4 = product.name
+            p = product.description
+            h5 $#{product.price}

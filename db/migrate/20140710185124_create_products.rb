@@ -9,6 +9,7 @@ class CreateProducts < ActiveRecord::Migration
       t.decimal :weight
       t.boolean :on_sale
       t.boolean :featured
+      t.string :cover_picture
 
       t.timestamps
     end

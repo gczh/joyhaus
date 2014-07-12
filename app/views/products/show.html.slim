@@ -27,6 +27,15 @@
       strong Featured:
       = @product.featured
 
+    p
+      strong Cover Picture:
+      = @product.cover_picture
+
+    = image_tag(@product.cover_picture, height: '300', width: 'auto')
+
+    br
+    br
+    
     = link_to 'Edit', edit_product_path(@product)
     '|
     = link_to 'Back', products_path
