@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
   # GET /carts.json
@@ -70,5 +71,15 @@ class CartsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
       params[:cart]
+    end
+
+    def invalid_cart
+      invalid_cart_message = "You have tried to access an invalid cart! Clear your browser cache and try again. If it persists, contact us"
+      logger.error "Attempt to access an invalid cart #{params[:id]}"
+      unless (cart_id = session[:cart_id]).nil?
+        redirect_to cart_path(Cart.find(cart_id)), notice: invalid_cart_message
+      else
+        redirect_to root_path, notice: invalid_cart_message
+      end
     end
 end
