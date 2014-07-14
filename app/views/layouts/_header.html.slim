@@ -1,6 +1,7 @@
 .header
   h1.logo 
-    = link_to "Joyhaus Gifts", root_path
+    = link_to root_path do
+      = image_tag("joyhauslogo2.jpg", width: '250px')
   - if current_user
     span.greeting-message Hi, #{current_user.email}.
     
