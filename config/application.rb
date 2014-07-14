@@ -21,5 +21,13 @@ module Joyhaus
     # config.i18n.default_locale = :de
     
     # config.assets.paths << Rails.root.join('fonts')
+
+    config.generators do |g|
+      g.stylesheets false
+      g.helper false
+      g.javascripts false
+      g.jbuilder false
+      g.view_specs false
+    end
   end
 end

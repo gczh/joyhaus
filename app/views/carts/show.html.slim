@@ -1,0 +1,8 @@
+h3 Your Cart
+
+- @cart.line_items.each do |item|
+  h4 = item.product.name
+  ul
+    li #{item.quantity} x $#{item.product.price}
+
+h4 Subtotal: #{@cart.subtotal}

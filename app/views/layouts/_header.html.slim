@@ -2,7 +2,8 @@
   h1.logo 
     = link_to "Joyhaus Gifts", root_path
   - if current_user
-    span.greeting-message Hi, #{current_user.email}
+    span.greeting-message Hi, #{current_user.email}.
+    
   ul.list-inline
     li.active 
       = link_to "Browse", root_path

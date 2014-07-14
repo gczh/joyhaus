@@ -1,0 +1,45 @@
+p#notice = notice
+
+p
+  strong User:
+  = @order.user_id
+p
+  strong Status:
+  = @order.status
+p
+  strong Email:
+  = @order.email
+p
+  strong Name:
+  = @order.name
+p
+  strong Address:
+  = @order.address
+p
+  strong Postal code:
+  = @order.postal_code
+p
+  strong Phone number:
+  = @order.phone_number
+p
+  strong Discount:
+  = @order.discount
+p
+  strong Payment method:
+  = @order.payment_method
+p
+  strong Shipping method:
+  = @order.shipping_method
+p
+  strong Notes:
+  = @order.notes
+p
+  strong Mail number:
+  = @order.mail_number
+p
+  strong Mail type:
+  = @order.mail_type
+
+= link_to 'Edit', edit_order_path(@order)
+'|
+= link_to 'Back', orders_path

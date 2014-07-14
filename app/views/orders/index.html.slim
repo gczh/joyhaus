@@ -1,0 +1,45 @@
+h1 Listing orders
+
+table
+  thead
+    tr
+      th User
+      th Status
+      th Email
+      th Name
+      th Address
+      th Postal code
+      th Phone number
+      th Discount
+      th Payment method
+      th Shipping method
+      th Notes
+      th Mail number
+      th Mail type
+      th
+      th
+      th
+
+  tbody
+    - @orders.each do |order|
+      tr
+        td = order.user_id
+        td = order.status
+        td = order.email
+        td = order.name
+        td = order.address
+        td = order.postal_code
+        td = order.phone_number
+        td = order.discount
+        td = order.payment_method
+        td = order.shipping_method
+        td = order.notes
+        td = order.mail_number
+        td = order.mail_type
+        td = link_to 'Show', order
+        td = link_to 'Edit', edit_order_path(order)
+        td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Order', new_order_path
