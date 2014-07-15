@@ -1,8 +1,22 @@
-h3 Your Cart
+.row
+  .col-lg-12
+    h3 Your Cart
 
-- @cart.line_items.each do |item|
-  h4 = item.product.name
-  ul
-    li #{item.quantity} x $#{item.product.price}
+.row
+  .col-lg-12
+    table.table.table-condensed
+      thead
+        tr
+          th Qty
+          th Item Name
+          th Total
+      tbody
+        = render @cart.line_items
 
-h4 Subtotal: #{@cart.subtotal}
+        tr.subtotal
+          td.text colspan="2" Subtotal:
+          td = @cart.subtotal
+
+.row
+  .col-lg-12
+    = button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'You will be emptying your cart upon confirming. Are you sure you want to proceed?' }

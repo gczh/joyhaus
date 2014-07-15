@@ -4,6 +4,7 @@ class CreateLineItems < ActiveRecord::Migration
       t.references :product, index: true
       t.belongs_to :cart, index: true
 
+      t.integer :price
       t.integer :quantity, default: 1
 
       t.timestamps

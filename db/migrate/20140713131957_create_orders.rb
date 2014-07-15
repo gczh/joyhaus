@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :postal_code
       t.integer :phone_number
       t.decimal :discount
+      t.decimal :subtotal
       t.integer :payment_method
       t.integer :shipping_method
       t.text :notes
