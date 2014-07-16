@@ -11,6 +11,10 @@ class Cart < ActiveRecord::Base
     current_item
   end
 
+  def clear_all
+    line_items.destroy_all
+  end
+
   def subtotal
     line_items.map { |li| li.product.price * li.quantity }.sum
   end
