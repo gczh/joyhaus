@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # before_action :set_cart, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
-  before_action :set_cart, only: [:index, :destroy]
+  before_action :set_cart, only: [:index, :destroy, :empty]
 
   def index
   end
@@ -52,14 +52,27 @@ class CartsController < ApplicationController
     end
   end
 
+  def empty
+    empty_cart_message = 'Your cart cant be emptied. Please try again.'
+    if @cart.id == session[:cart_id]
+      if @cart.clear_all
+        empty_cart_message = 'Your cart has been emptied'
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to carts_url, notice: empty_cart_message }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    binding.pry
-    destroy_cart_message = 'Your cart cant be emptied. Please try again.'
+    destroy_cart_message = 'Your cart cant be removed. Please try again.'
     if @cart.id == session[:cart_id]
-      if @cart.clear_all
-        destroy_cart_message = 'Your cart has been emptied'
+      if @cart.destroy
+        destroy_cart_message = 'Your cart has been removed'
       end
     end
 

@@ -19,5 +19,5 @@
 
 .row
   .col-lg-12
-    = button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'You will be emptying your cart upon confirming. Are you sure you want to proceed?' }
+    = button_to 'Empty cart', cart_empty_path(@cart), method: :get, data: { confirm: 'You will be emptying your cart upon confirming. Are you sure you want to proceed?' }
     = button_to "Checkout", new_order_path, method: :get

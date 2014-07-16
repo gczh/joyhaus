@@ -3,6 +3,7 @@ Joyhaus::Application.routes.draw do
   resources :line_items
 
   resources :carts do
+    get :empty
     get :manage, on: :collection
   end
 

@@ -6,9 +6,6 @@
         - @order.errors.full_messages.each do |message|
           li = message
   .field
-    = f.label :status
-    = f.number_field :status
-  .field
     = f.label :email
     = f.text_field :email
   .field
@@ -24,21 +21,13 @@
     = f.label :phone_number
     = f.number_field :phone_number
   .field
-    = f.label :discount
-    = f.text_field :discount
-  .field
     = f.label :payment_method
-    = f.number_field :payment_method
+    = f.select :payment_method, Order::PAYMENT_TYPES, prompt: 'Select a payment method'
   .field
     = f.label :shipping_method
-    = f.number_field :shipping_method
+    = f.select :shipping_method, Order::SHIPPING_TYPES, prompt: 'Select a shipping method'
   .field
     = f.label :notes
     = f.text_area :notes
-  .field
-    = f.label :mail_number
-    = f.text_field :mail_number
-  .field
-    = f.label :mail_type
-    = f.text_field :mail_type
+
   .actions = f.submit 'Save'
