@@ -18,17 +18,51 @@ hr
 
 h2 Customer Information
 
-= @order_review.email
+p 
+  strong Email: 
+  = @order_review.email
 
 hr
 
 h2 Delivery & Billing Information
 
-hr
+p 
+  strong Name: 
+  = @order_review.name
 
+p
+  strong Phone number: 
+  = @order_review.phone_number
+
+p
+  strong Address: 
+  = @order_review.address
+
+p
+  strong Postal code: 
+  = @order_review.postal_code
+
+hr
 h2 Shipping Charges
 
-hr
+p
+  strong Shipping method: 
+  = Order::SHIPPING_TYPES[@order_review.shipping_method]
 
+hr
 h2 Payment Information
 
+p
+  strong Payment by: 
+  = Order::PAYMENT_TYPES[@order_review.payment_method]
+
+p
+  strong To: POSB Current Account:
+  | 102-592949-9
+
+hr
+h2 Additional Notes
+
+p = @order_review.notes
+
+= button_to 'Submit Order', orders_path, method: :post

@@ -16,7 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def review
-    binding.pry
+    # binding.pry
+    @order = Order.new
   end
 
   # GET /orders/1
@@ -31,13 +32,14 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(session[:order_review])
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        session[:order_review] = nil
         
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }

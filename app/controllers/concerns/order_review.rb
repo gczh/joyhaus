@@ -3,7 +3,7 @@ module OrderReview
   
   private
   def set_order_review
-    binding.pry
+    # binding.pry
     @order_review = Order.new(session[:order_review])
   rescue ActiveRecord::RecordNotFound
     order_params["status"] = 0
