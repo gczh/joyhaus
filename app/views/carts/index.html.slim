@@ -15,10 +15,10 @@
             / = render partial: "line_items/line_item", locals: {line_items: @cart.line_items, cf: cf}
             = cf.fields_for :line_items do |l|
               tr
-                td = l.object.product.name
-                td = l.text_field :quantity
-                td = l.object.total_price
                 = l.hidden_field :id
+                td = l.object.product.name
+                td = l.text_field :quantity, size: 3
+                td = l.object.total_price
 
             tr.subtotal
               td.text colspan="2" Subtotal:

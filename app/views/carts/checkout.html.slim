@@ -1,33 +1,24 @@
-= form_for @order do |f|
-  - if @order.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-      ul
-        - @order.errors.full_messages.each do |message|
-          li = message
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :postal_code
-    = f.text_field :postal_code
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .field
-    = f.label :payment_method
-    = f.select :payment_method, Order::PAYMENT_TYPES, prompt: 'Select a payment method'
-  .field
-    = f.label :shipping_method
-    = f.select :shipping_method, Order::SHIPPING_TYPES, prompt: 'Select a shipping method'
-  .field
-    = f.label :notes
-    = f.text_area :notes
+h1 Checkout
 
-  .actions = f.submit 'Save'
+h2 Cart Content
+
+table.table.table-condensed
+  thead
+    tr
+      th Qty
+      th Products
+      th Price
+  tbody
+    - @cart.line_items.each do |line_item|
+      tr
+        td #{line_item.quantity}x
+        td = line_item.product.name
+        td = line_item.total_price
+
+    tr.subtotal
+      td.text colspan="2" Subtotal:
+      td = @cart.subtotal
+
+hr
+
+== render 'orders/form'

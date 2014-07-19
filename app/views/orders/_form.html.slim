@@ -1,33 +1,54 @@
-= form_for @order do |f|
+= form_for @order, url: build_review_orders_url do |f|
+
   - if @order.errors.any?
     #error_explanation
       h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
       ul
         - @order.errors.full_messages.each do |message|
           li = message
+
+  h2 Customer Information
+
   .field
     = f.label :email
     = f.text_field :email
+
+  hr
+
+  h2 Delivery & Billing Information
+
+  p Enter your delivery address where we will ship your beautiful cards to you promptly
+  
   .field
     = f.label :name
     = f.text_field :name
+  .field
+    = f.label :phone_number
+    = f.text_field :phone_number
   .field
     = f.label :address
     = f.text_field :address
   .field
     = f.label :postal_code
     = f.text_field :postal_code
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
+
+  hr
+
+  h2 Shipping & Payment Method
+
   .field
     = f.label :payment_method
     = f.select :payment_method, Order::PAYMENT_TYPES, prompt: 'Select a payment method'
   .field
     = f.label :shipping_method
     = f.select :shipping_method, Order::SHIPPING_TYPES, prompt: 'Select a shipping method'
+
+  hr
+
+  h2 Additional Comments
+
   .field
     = f.label :notes
     = f.text_area :notes
 
-  .actions = f.submit 'Save'
+  .actions = f.submit "Review Order"

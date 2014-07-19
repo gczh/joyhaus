@@ -9,6 +9,8 @@ Joyhaus::Application.routes.draw do
   end
 
   resources :orders, path: 'order' do
+    post :build_review, on: :collection
+    get  :review, on: :collection
   end
 
   resources :products

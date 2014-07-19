@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
 
   PAYMENT_TYPES = ["Bank Transfer"]
-  STATUS_TYPES = ["Waiting For Payment", "Processing Payment", "Payment Received", "Shipping Order", "Success"]
+  STATUS_TYPES = ["Pending Confirmation", "Waiting For Payment", "Processing Payment", "Payment Received", "Shipping Order", "Success"]
   SHIPPING_TYPES = ["Normal Mail (free)","Registered Mail (extra cost)"]
 
   def add_line_items_from_cart(cart)

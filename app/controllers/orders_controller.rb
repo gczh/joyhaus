@@ -1,13 +1,22 @@
 class OrdersController < ApplicationController
-  include CurrentCart
+  include CurrentCart, OrderReview
 
-  before_action :set_cart, only: [:new, :create]
+
+  before_action :set_cart, only: [:review, :create]
+  before_action :set_order_review, only: [:build_review, :review, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
     @orders = Order.all
+  end
+
+  def build_review
+  end
+
+  def review
+    binding.pry
   end
 
   # GET /orders/1

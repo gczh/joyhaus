@@ -1,0 +1,34 @@
+h1 Review Order
+
+p Your order is almost complete! Please review the details below and confirm that everything is okay. Hit submit if you're fine with everything and you are done with submitting an order!
+
+hr
+
+h2 Cart Contents
+
+table.table.table-condensed
+  tbody
+    - @cart.line_items.each do |line_item|
+      tr
+        td #{line_item.quantity}x
+        td = line_item.product.name
+        td = line_item.total_price
+
+hr
+
+h2 Customer Information
+
+= @order_review.email
+
+hr
+
+h2 Delivery & Billing Information
+
+hr
+
+h2 Shipping Charges
+
+hr
+
+h2 Payment Information
+

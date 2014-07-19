@@ -18,10 +18,6 @@ class CartsController < ApplicationController
     @cart = Cart.new
   end
 
-  # GET /carts/1/edit
-  def edit
-  end
-
   def checkout
     if @cart.line_items.empty?
       redirect_to carts_url, notice: 'Your cart is empty'
@@ -48,7 +44,6 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    binding.pry
     respond_to do |format|
       if @cart.update(cart_params)
         format.html { redirect_to carts_url, notice: 'Cart was successfully updated.' }
