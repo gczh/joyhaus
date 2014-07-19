@@ -2,12 +2,14 @@ Joyhaus::Application.routes.draw do
 
   resources :line_items
 
-  resources :carts do
+  resources :carts, path: 'cart' do
     get :empty
+    get :checkout, on: :collection
     get :manage, on: :collection
   end
 
-  resources :orders
+  resources :orders, path: 'order' do
+  end
 
   resources :products
 

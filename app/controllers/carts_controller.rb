@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # before_action :set_cart, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
-  before_action :set_cart, only: [:index, :destroy, :empty]
+  before_action :set_cart, only: [:index, :destroy, :checkout, :empty, :update]
 
   def index
   end
@@ -20,6 +20,13 @@ class CartsController < ApplicationController
 
   # GET /carts/1/edit
   def edit
+  end
+
+  def checkout
+    if @cart.line_items.empty?
+      redirect_to carts_url, notice: 'Your cart is empty'
+    end
+    @order = Order.new
   end
 
   # POST /carts
@@ -41,9 +48,10 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
+    binding.pry
     respond_to do |format|
       if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.html { redirect_to carts_url, notice: 'Cart was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -90,7 +98,7 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params[:cart]
+      params.require(:cart).permit(line_items_attributes: [:id, :quantity])
     end
 
     def invalid_cart
