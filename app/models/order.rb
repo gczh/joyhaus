@@ -3,6 +3,14 @@ class Order < ActiveRecord::Base
 
   has_many :line_items, dependent: :destroy
 
+  validates_presence_of :email
+  validates_presence_of :name
+  validates_presence_of :address
+  validates_presence_of :postal_code
+  validates_presence_of :phone_number
+  validates_presence_of :payment_method
+  validates_presence_of :shipping_method
+
   PAYMENT_TYPES = ["Bank Transfer"]
   STATUS_TYPES = ["Pending Confirmation", "Waiting For Payment", "Processing Payment", "Payment Received", "Shipping Order", "Success"]
   SHIPPING_TYPES = ["Normal Mail (free)","Registered Mail (extra cost)"]

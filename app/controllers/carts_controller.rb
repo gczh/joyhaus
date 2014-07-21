@@ -19,6 +19,7 @@ class CartsController < ApplicationController
   end
 
   def checkout
+    session[:order_review] = nil
     if @cart.line_items.empty?
       redirect_to carts_url, notice: 'Your cart is empty'
     end

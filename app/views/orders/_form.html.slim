@@ -1,5 +1,4 @@
-= form_for @order, url: build_review_orders_url do |f|
-
+= form_for @order, url: build_review_orders_url, html: { class: 'form-horizontal' } do |f|
   - if @order.errors.any?
     #error_explanation
       h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
@@ -7,48 +6,66 @@
         - @order.errors.full_messages.each do |message|
           li = message
 
-  h2 Customer Information
+  .row
+    .col-xs-12
+      h2 Customer Information
 
-  .field
-    = f.label :email
-    = f.text_field :email
+  .form-group
+    .col-xs-1 = f.label :email
+    .col-xs-11 = f.text_field :email
 
-  hr
+  .row
+    .col-xs-12
+      h2 Delivery & Billing Information
 
-  h2 Delivery & Billing Information
+  .row
+    .col-xs-12
+      p Enter your delivery address where we will ship your beautiful cards to you promptly
 
-  p Enter your delivery address where we will ship your beautiful cards to you promptly
+  .form-group
+    .col-xs-1 = f.label :name
+    .col-xs-11 = f.text_field :name
+
+  .form-group
+    .col-xs-1 = f.label :phone_number
+    .col-xs-11 = f.text_field :phone_number
   
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :phone_number
-    = f.text_field :phone_number
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :postal_code
-    = f.text_field :postal_code
+  .form-group
+    .col-xs-1 = f.label :address
+    .col-xs-11 = f.text_field :address
+  
+  .form-group
+    .col-xs-1 = f.label :postal_code
+    .col-xs-11 = f.text_field :postal_code
 
-  hr
+  .row
+    .col-xs-12
+      h2 Payment Method
 
-  h2 Shipping & Payment Method
+  - Order::PAYMENT_TYPES.each do |ptype|
+    .radio
+      label
+        = f.radio_button :payment_method, ptype, prompt: 'Select a payment method'
+        = ptype
 
-  .field
-    = f.label :payment_method
-    = f.select :payment_method, Order::PAYMENT_TYPES, prompt: 'Select a payment method'
-  .field
-    = f.label :shipping_method
-    = f.select :shipping_method, Order::SHIPPING_TYPES, prompt: 'Select a shipping method'
+  .row
+    .col-xs-12
+      h2 Shipping Method
 
-  hr
+  - Order::SHIPPING_TYPES.each do |otype|
+    .radio
+      label
+        = f.radio_button :shipping_method, otype, prompt: 'Select a shipping method'
+        = otype
 
-  h2 Additional Comments
+  .row
+    .col-xs-12
+      h2 Additional Comments
 
-  .field
-    = f.label :notes
-    = f.text_area :notes
+  .form-group
+    .col-xs-1 = f.label :notes
+    .col-xs-11 = f.text_area :notes
 
-  .actions = f.submit "Review Order"
+  .row
+    .col-xs-12
+      .actions = f.submit "Review Order"
