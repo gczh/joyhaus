@@ -23,6 +23,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def pending_payment
+    status == 1
+  end
+
   private
   def set_subtotal
     subtotal = line_items.map { |li| li.total_price }.sum

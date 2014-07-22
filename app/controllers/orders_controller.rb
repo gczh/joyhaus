@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    if @order.status == 0
+    if @order.order_payment.nil?
       @order_payment = OrderPayment.new
     else
       @order_payment = @order.order_payment

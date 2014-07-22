@@ -1,5 +1,5 @@
-- if @order.status == 0
-  h1 Order Status
+h1 Order Status (#ref_no)
+- unless @order.pending_payment
 
   h2 Update Payment Transfer
 
@@ -22,4 +22,6 @@
 
 - else
 
-  p you have already paid. please wait while we verify your payment
+  h2 Pending Verification of Payment
+
+  p Your payment is pending verification. You will be informed once it is verified.
