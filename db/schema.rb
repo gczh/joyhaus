@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714183515) do
+ActiveRecord::Schema.define(version: 20140722173719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20140714183515) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
+  create_table "order_payments", force: true do |t|
+    t.integer  "order_id"
+    t.string   "transaction_id"
+    t.string   "ibanking_nick"
+    t.datetime "transaction_datetime"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", force: true do |t|
     t.integer  "user_id"
     t.integer  "status"
@@ -50,6 +59,9 @@ ActiveRecord::Schema.define(version: 20140714183515) do
     t.text     "notes"
     t.string   "mail_number"
     t.string   "mail_type"
+    t.string   "transaction_id"
+    t.string   "ibanking_nick"
+    t.datetime "transaction_datetime"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

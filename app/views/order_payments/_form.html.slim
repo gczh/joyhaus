@@ -1,0 +1,21 @@
+= form_for @order_payment, url: order_order_payments_path(@order) do |f|
+
+  p 
+    strong Transaction ID:
+
+  = f.text_field :transaction_id
+
+  p 
+    strong iBanking Nickname:
+
+  = f.text_field :ibanking_nick
+
+  p 
+    strong Transaction Date: 
+
+  = f.datetime_select :transaction_datetime, order: [:day, :month, :year, :hour, :minute]
+
+  br
+  br
+
+  = f.submit 'Submit Details', method: :post

@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   before_save :set_subtotal
 
   has_many :line_items, dependent: :destroy
+  has_one :order_payment
 
   validates_presence_of :email
   validates_presence_of :name
@@ -12,7 +13,7 @@ class Order < ActiveRecord::Base
   validates_presence_of :shipping_method
 
   PAYMENT_TYPES = ["Bank Transfer"]
-  STATUS_TYPES = ["Pending Confirmation", "Waiting For Payment", "Processing Payment", "Payment Received", "Shipping Order", "Success"]
+  STATUS_TYPES = ["Waiting For Payment", "Processing Payment", "Payment Received", "Shipping Order", "Success"]
   SHIPPING_TYPES = ["Normal Mail (free)","Registered Mail (extra cost)"]
 
   def add_line_items_from_cart(cart)

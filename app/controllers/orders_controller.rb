@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   include CurrentCart, OrderReview
 
-
   before_action :set_cart, only: [:review, :create]
   before_action :set_order_review, only: [:build_review, :review, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
@@ -16,13 +15,17 @@ class OrdersController < ApplicationController
   end
 
   def review
-    # binding.pry
     @order = Order.new
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    if @order.status == 0
+      @order_payment = OrderPayment.new
+    else
+      @order_payment = @order.order_payment
+    end
   end
 
   # GET /orders/1/edit
@@ -36,7 +39,7 @@ class OrdersController < ApplicationController
     @order.add_line_items_from_cart(@cart)
 
     respond_to do |format|
-      if @order.save
+      if @order.save && @order.update(status: 0)
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         session[:order_review] = nil

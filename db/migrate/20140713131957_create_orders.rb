@@ -15,6 +15,9 @@ class CreateOrders < ActiveRecord::Migration
       t.text :notes
       t.string :mail_number
       t.string :mail_type
+      t.string :transaction_id
+      t.string :ibanking_nick
+      t.datetime :transaction_datetime
 
       t.timestamps
     end

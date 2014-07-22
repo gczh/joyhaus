@@ -1,44 +1,25 @@
-h3 Order Placed!
+- if @order.status == 0
+  h1 Order Status
 
-h4 
-  | Before we can proceed, we will need you to complete the payment by transferring the subtotal to the bank account 
-  strong #023-5923-294 
-  | within 48 hours.
+  h2 Update Payment Transfer
 
-p
-  strong Status:
-  = @order.status
-p
-  strong Email:
-  = @order.email
-p
-  strong Name:
-  = @order.name
-p
-  strong Address:
-  = @order.address
-p
-  strong Postal code:
-  = @order.postal_code
-p
-  strong Phone number:
-  = @order.phone_number
-p
-  strong Discount:
-  = @order.discount
-p
-  strong Payment method:
-  = Order::PAYMENT_TYPES[@order.payment_method]
-p
-  strong Shipping method:
-  = Order::SHIPPING_TYPES[@order.shipping_method]
-p
-  strong Notes:
-  = @order.notes
-p
-  strong Total damage:
-  = @order.subtotal
+  p
+    | Before we can proceed, we will need you to complete the payment by transferring the subtotal to the bank account 
+    strong #023-5923-294 
+    | within 24 hours.
 
-= link_to 'Edit', edit_order_path(@order)
-'|
-= link_to 'Back', orders_path
+  h2 Billing Reference
+
+  p
+    strong Payment by: 
+    | iBank Transfer (recommended)
+
+  p
+    strong Paid to: 
+    | POSB Savings Account #023-5923-294
+
+  = render "order_payments/form"
+
+- else
+
+  p you have already paid. please wait while we verify your payment
