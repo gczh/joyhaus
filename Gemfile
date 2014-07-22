@@ -40,6 +40,8 @@ group :development do
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
   gem 'rb-readline', require: false
+
+  gem "letter_opener"
 end
 
 group :development, :test do

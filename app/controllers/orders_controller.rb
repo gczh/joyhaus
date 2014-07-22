@@ -43,6 +43,8 @@ class OrdersController < ApplicationController
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
         session[:order_review] = nil
+
+        OrderMailer.send_receipt(@order).deliver
         
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render action: 'show', status: :created, location: @order }
