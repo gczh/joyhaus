@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'PrintClearly-Regular';
+  src: font-url(asset-path('PrintClearly.otf'));
+  src: font-url(asset-path('PrintClearly.otf')) format('opentype');
+  font-style:normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'PrintClearly-Bold';
+  src: font-url(asset-path('PrintBold.otf'));
+  src: font-url(asset-path('PrintBold.otf')) format('opentype');
+  font-style:normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'PrintClearly-Dashed';
+  src: font-url(asset-path('PrintDashed.otf'));
+  src: font-url(asset-path('PrintDashed.otf')) format('opentype');
+  font-style:normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis1920-Regular';
+  src: font-url(asset-path('Metropolis 1920.otf'));
+  src: font-url(asset-path('Metropolis 1920.otf')) format('opentype');
+  font-style:normal;
+  font-weight: normal;
+}
