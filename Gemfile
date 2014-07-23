@@ -40,6 +40,8 @@ group :development do
   gem 'rb-fsevent', require: false
   gem 'rb-inotify', require: false
   gem 'rb-readline', require: false
+
+  gem "letter_opener"
 end
 
 group :development, :test do
@@ -47,4 +49,8 @@ group :development, :test do
   gem 'faker'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.0.0'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

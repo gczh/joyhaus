@@ -1,0 +1,9 @@
+/ - line_items.each do |line_item|
+/   tr
+/     = cf.fields_for :line_items, line_item do |lif|
+/       td = line_item.product.name
+/       td 
+/         = lif.text_field :quantity, value: line_item.quantity
+/         = lif.hidden_field :id, value: line_item.id
+
+/       td = line_item.total_price

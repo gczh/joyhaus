@@ -1,0 +1,27 @@
+h1 Order Status (#ref_no)
+- unless @order.pending_payment
+
+  h2 Update Payment Transfer
+
+  p
+    | Before we can proceed, we will need you to complete the payment by transferring the subtotal to the bank account 
+    strong #023-5923-294 
+    | within 24 hours.
+
+  h2 Billing Reference
+
+  p
+    strong Payment by: 
+    | iBank Transfer (recommended)
+
+  p
+    strong Paid to: 
+    | POSB Savings Account #023-5923-294
+
+  = render "order_payments/form"
+
+- else
+
+  h2 Pending Verification of Payment
+
+  p Your payment is pending verification. You will be informed once it is verified.

@@ -1,8 +1,10 @@
 .header
   h1.logo 
-    = link_to "Joyhaus Gifts", root_path
+    = link_to root_path do
+      = image_tag("joyhauslogo2.jpg", width: '250px')
   - if current_user
-    span.greeting-message Hi, #{current_user.email}
+    span.greeting-message Hi, #{current_user.email}.
+    
   ul.list-inline
     li.active 
       = link_to "Browse", root_path
@@ -14,8 +16,7 @@
 
     li.divider
 
-    li
-      a href="#" Shopping Cart
+    li #{link_to "Shopping Cart", carts_path}
 
     - if current_user
       li 

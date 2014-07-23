@@ -3,6 +3,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home
+    if session[:counter].nil?
+      session[:counter] = 1
+    else
+      session[:counter] += 1
+    end
     @products = Product.where(on_sale: true)
   end
 
