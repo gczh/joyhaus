@@ -5,16 +5,16 @@ class OrderPaymentsController < ApplicationController
   def create
     @order.build_order_payment(order_payment_params)
     if @order.save && @order.update(status: 1)
-      redirect_to @order, notice: 'Payment info was successfully updated. Please wait while we review it.'
+      redirect_to orders_path(@order.reference_id), notice: 'Payment info was successfully updated. Please wait while we review it.'
     else
-      redirect_to @order, notice: 'Payment info was not updated. Please retry again.'
+      redirect_to orders_path(@order.reference_id), notice: 'Payment info was not updated. Please retry again.'
     end
     # how to save datetime_select fields? is there quick way or manually set?
   end
 
   private
     def set_order
-      @order = Order.find_by(id: params["order_id"])
+      @order = Order.friendly.find(params["order_id"])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

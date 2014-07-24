@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
-  before_save :set_subtotal
+  extend FriendlyId
+  before_save :set_subtotal, :set_reference_id
 
   has_many :line_items, dependent: :destroy
   has_one :order_payment
@@ -14,7 +15,9 @@ class Order < ActiveRecord::Base
 
   PAYMENT_TYPES = ["Bank Transfer"]
   STATUS_TYPES = ["Waiting For Payment", "Processing Payment", "Payment Received", "Shipping Order", "Success"]
-  SHIPPING_TYPES = ["Normal Mail (free)","Registered Mail (extra cost)"]
+  SHIPPING_TYPES = ["Normal Mail (free)","Registered Mail ($1.50)"]
+
+  friendly_id :reference_id
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|
@@ -25,6 +28,10 @@ class Order < ActiveRecord::Base
 
   def pending_payment
     status == 1
+  end
+
+  def set_reference_id
+    self.reference_id = "#{self.name.split(' ').map { |np| np.first }.join()}-#{SecureRandom.hex(3)}".upcase
   end
 
   private

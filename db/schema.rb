@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140722173719) do
   end
 
   create_table "orders", force: true do |t|
+    t.string   "reference_id"
     t.integer  "user_id"
     t.integer  "status"
     t.string   "email"

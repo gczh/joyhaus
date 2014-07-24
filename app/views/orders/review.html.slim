@@ -13,6 +13,9 @@ table.table.table-condensed
         td #{line_item.quantity}x
         td = line_item.product.name
         td = line_item.total_price
+    tr.subtotal
+      td.text colspan="2" Subtotal:
+      td = @cart.subtotal
 
 hr
 

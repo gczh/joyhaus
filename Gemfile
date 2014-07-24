@@ -23,6 +23,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jbuilder', '~> 1.2'
 gem 'rails_utils'
 
+#Utility
+gem 'friendly_id', '~> 5.0.0'
+
 group :doc do
   gem 'sdoc', require: false
 end

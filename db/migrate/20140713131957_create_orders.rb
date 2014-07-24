@@ -1,6 +1,7 @@
 class CreateOrders < ActiveRecord::Migration
   def change
     create_table :orders do |t|
+      t.string :reference_id
       t.integer :user_id
       t.integer :status
       t.string :email
