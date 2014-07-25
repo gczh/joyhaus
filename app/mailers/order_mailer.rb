@@ -1,5 +1,5 @@
 class OrderMailer < ActionMailer::Base
-  default from: "orders@joyhaus.com"
+  default from: "Joyhaus Gifts <orders@joyhaus.com>"
 
   def send_receipt(order)
     @order = order

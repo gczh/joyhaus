@@ -36,6 +36,6 @@ class Order < ActiveRecord::Base
 
   private
   def set_subtotal
-    subtotal = line_items.map { |li| li.total_price }.sum
+    self.subtotal = line_items.map { |li| li.total_price }.sum
   end
 end

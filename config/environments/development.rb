@@ -28,6 +28,17 @@ Joyhaus::Application.configure do
   config.assets.debug = true
 
   # Setup letter opener for emails
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.mailgun.org',
+    domain:               'joyhaus.com',
+    user_name:            ENV['MAILGUN_SMTP_LOGIN'],
+    password:             ENV['MAILGUN_SMTP_PASSWORD'],
+    authentication:       'plain'
+  }
+  config.action_mailer.default_url_options = {
+    host: '127.0.0.1',
+    port: 3000
+  }
 end

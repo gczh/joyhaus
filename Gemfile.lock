@@ -108,12 +108,15 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailgun (0.8)
+      rest-client
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.4.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    netrc (0.7.7)
     oauth (0.4.7)
     oauth2 (0.9.4)
       faraday (>= 0.8, < 0.10)
@@ -165,6 +168,9 @@ GEM
     rb-readline (0.5.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     role_model (0.8.1)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
@@ -255,6 +261,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   letter_opener
+  mailgun (~> 0.7)
   pg
   pry-rails
   quiet_assets
