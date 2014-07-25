@@ -16,7 +16,7 @@ Joyhaus::Application.routes.draw do
     get :manage, on: :collection
   end
 
-  resources :orders, path: 'order' do
+  resources :orders, path: 'order', except: [:edit, :destroy] do
     post :build_review, on: :collection
     get  :review, on: :collection
     resources :order_payments, except: [:index, :show, :edit, :destroy, :update]

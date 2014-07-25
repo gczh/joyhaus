@@ -1,4 +1,7 @@
-h1 Order Status (#ref_no)
+h1 
+  | Order Status 
+  small 
+    | (#{@order.reference_id})
 - unless @order.pending_payment
 
   h2 Update Payment Transfer
