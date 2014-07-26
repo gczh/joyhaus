@@ -16,3 +16,13 @@
 //= require bootstrap
 //= require_tree .
 
+var Joyhaus = {
+  init: function(){
+  }
+};
+
+Joyhaus.admin_orders = {
+  init: function(){
+    removeAccordionDelay();
+  }
+}

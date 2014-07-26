@@ -1,45 +1,52 @@
-h1 Listing orders
+ul#myTab.nav.nav-tabs role="tablist" 
+  li.active
+    a data-toggle="tab" href="#home" role="tab"  Home
+  li
+    a data-toggle="tab" href="#profile" role="tab"  Profile
+  li.dropdown
+    a#myTabDrop1.dropdown-toggle data-toggle="dropdown" href="#" 
+      | Dropdown
+      span.caret
+    ul.dropdown-menu aria-labelledby="myTabDrop1" role="menu" 
+      li
+        a data-toggle="tab" href="#dropdown1" role="tab" tabindex="-1"  @fat
+      li
+        a data-toggle="tab" href="#dropdown2" role="tab" tabindex="-1"  @mdo
+#myTabContent.tab-content
+  #home.tab-pane.fade.in.active
+    h1 Listing orders
 
-table
-  thead
-    tr
-      th User
-      th Status
-      th Email
-      th Name
-      th Address
-      th Postal code
-      th Phone number
-      th Discount
-      th Payment method
-      th Shipping method
-      th Notes
-      th Mail number
-      th Mail type
-      th
-      th
-      th
+    table.table
+      thead
+        tr
+          th #
+          th Customer
+          th Status
+          th Shipping Details
+          th Total
 
-  tbody
-    - @orders.each do |order|
-      tr
-        td = order.user_id
-        td = order.status
-        td = order.email
-        td = order.name
-        td = order.address
-        td = order.postal_code
-        td = order.phone_number
-        td = order.discount
-        td = order.payment_method
-        td = order.shipping_method
-        td = order.notes
-        td = order.mail_number
-        td = order.mail_type
-        td = link_to 'Show', order_path(order)
-        td = link_to 'Edit', edit_admin_order_path(order)
-        td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
+      tbody
+        - @orders.each_with_index do |order, index|
+          tr.accordion-toggle data-target="#order#{index}" data-toggle="collapse" 
+            td = order.reference_id
+            td = order.name
+            td = Order::STATUS_TYPES[order.status]
+            td = order.address
+            td = order.subtotal
+          tr
+            td.hiddenRow colspan="6" 
+              .order-dropdown.collapse id="order#{index}" Order #{order.reference_id}
+            / td = link_to 'Show', order_path(order)
+            / td = link_to 'Edit', edit_admin_order_path(order)
+            / td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
+    br
 
-= link_to 'New Order', new_admin_order_path
+    = link_to 'New Order', new_admin_order_path
+
+  #profile.tab-pane.fade
+    p Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+  #dropdown1.tab-pane.fade
+    p Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.
+  #dropdown2.tab-pane.fade
+    p Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.
