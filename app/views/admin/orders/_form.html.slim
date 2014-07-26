@@ -1,4 +1,4 @@
-= form_for @order, url: edit_order_url, html: { class: 'form-horizontal' } do |f|
+= form_for @order, url: admin_order_url, html: { class: 'form-horizontal' } do |f|
   - if @order.errors.any?
     #error_explanation
       h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"

@@ -19,7 +19,7 @@ Joyhaus::Application.routes.draw do
   resources :orders, path: 'order', except: [:index, :edit, :destroy] do
     post :build_review, on: :collection
     get  :review, on: :collection
-    resources :order_payments, except: [:index, :show, :edit, :destroy, :update]
+    resources :order_payments, only: [:create]
   end
 
   namespace :admin do

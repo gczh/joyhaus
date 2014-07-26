@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   extend FriendlyId
-  before_save :set_subtotal, :set_reference_id
+  before_create :set_subtotal, :set_reference_id
 
   has_many :line_items, dependent: :destroy
   has_one :order_payment
@@ -30,11 +30,12 @@ class Order < ActiveRecord::Base
     status == 1
   end
 
+
+  private
   def set_reference_id
     self.reference_id = "#{self.name.split(' ').map { |np| np.first }.join()}-#{SecureRandom.hex(3)}".upcase
   end
 
-  private
   def set_subtotal
     self.subtotal = line_items.map { |li| li.total_price }.sum
   end
