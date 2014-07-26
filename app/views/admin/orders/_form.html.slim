@@ -1,0 +1,71 @@
+= form_for @order, url: edit_order_url, html: { class: 'form-horizontal' } do |f|
+  - if @order.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
+      ul
+        - @order.errors.full_messages.each do |message|
+          li = message
+
+  .row
+    .col-xs-12
+      h2 Customer Information
+
+  .form-group
+    .col-xs-1 = f.label :email
+    .col-xs-11 = f.text_field :email
+
+  .row
+    .col-xs-12
+      h2 Delivery & Billing Information
+
+  .row
+    .col-xs-12
+      p Enter your delivery address where we will ship your beautiful cards to you promptly
+
+  .form-group
+    .col-xs-1 = f.label :name
+    .col-xs-11 = f.text_field :name
+
+  .form-group
+    .col-xs-1 = f.label :phone_number
+    .col-xs-11 = f.text_field :phone_number
+  
+  .form-group
+    .col-xs-1 = f.label :address
+    .col-xs-11 = f.text_field :address
+  
+  .form-group
+    .col-xs-1 = f.label :postal_code
+    .col-xs-11 = f.text_field :postal_code
+
+  .row
+    .col-xs-12
+      h2 Payment Method
+
+  - Order::PAYMENT_TYPES.each do |ptype|
+    .radio
+      label
+        = f.radio_button :payment_method, ptype, prompt: 'Select a payment method'
+        = ptype
+
+  .row
+    .col-xs-12
+      h2 Shipping Method
+
+  - Order::SHIPPING_TYPES.each do |otype|
+    .radio
+      label
+        = f.radio_button :shipping_method, otype, prompt: 'Select a shipping method'
+        = otype
+
+  .row
+    .col-xs-12
+      h2 Additional Comments
+
+  .form-group
+    .col-xs-1 = f.label :notes
+    .col-xs-11 = f.text_area :notes
+
+  .row
+    .col-xs-12
+      .actions = f.submit "Review Order"

@@ -77,4 +77,19 @@ Joyhaus::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Email config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    port:                 587,
+    address:              'smtp.mailgun.org',
+    domain:               'joyhaus.com',
+    user_name:            ENV['MAILGUN_SMTP_LOGIN'],
+    password:             ENV['MAILGUN_SMTP_PASSWORD'],
+    authentication:       'plain'
+  }
+
+  config.action_mailer.default_url_options = {
+    host: 'joyhaus.com'
+  }
 end

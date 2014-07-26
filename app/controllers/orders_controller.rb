@@ -5,12 +5,6 @@ class OrdersController < ApplicationController
   before_action :set_order_review, only: [:build_review, :review, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-  # GET /orders
-  # GET /orders.json
-  def index
-    @orders = Order.all
-  end
-
   def build_review
   end
 
@@ -26,10 +20,6 @@ class OrdersController < ApplicationController
     else
       @order_payment = @order.order_payment
     end
-  end
-
-  # GET /orders/1/edit
-  def edit
   end
 
   # POST /orders
@@ -66,16 +56,6 @@ class OrdersController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /orders/1
-  # DELETE /orders/1.json
-  def destroy
-    @order.destroy
-    respond_to do |format|
-      format.html { redirect_to orders_url }
-      format.json { head :no_content }
     end
   end
 

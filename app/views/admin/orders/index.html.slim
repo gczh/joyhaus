@@ -36,10 +36,10 @@ table
         td = order.notes
         td = order.mail_number
         td = order.mail_type
-        td = link_to 'Show', order
-        td = link_to 'Edit', edit_order_path(order)
+        td = link_to 'Show', order_path(order)
+        td = link_to 'Edit', edit_admin_order_path(order)
         td = link_to 'Destroy', order, data: {:confirm => 'Are you sure?'}, :method => :delete
 
 br
 
-= link_to 'New Order', new_order_path
+= link_to 'New Order', new_admin_order_path
